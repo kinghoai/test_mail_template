@@ -4,96 +4,109 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Test Email Template</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
         <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
+            .center {
+                width: 100%;
+                max-width: 700px;
+                margin: 0 auto;
             }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
+            .form__group {
                 position: relative;
+                padding: 15px 0 0;
+                margin-top: 10px;
+                width: 100%;
+                margin-bottom: 20px;
             }
-
-            .top-right {
+            .form__field {
+                font-family: inherit;
+                width: 100%;
+                border: 0;
+                border-bottom: 2px solid #9b9b9b;
+                outline: 0;
+                font-size: 1.3rem;
+                color: #d2cfcf;
+                padding: 7px 0;
+                background: transparent;
+                transition: border-color 0.2s;
+            }
+            .form__field::placeholder {
+                color: transparent;
+            }
+            .form__field:placeholder-shown ~ .form__label {
+                font-size: 1.3rem;
+                cursor: text;
+                top: 20px;
+            }
+            .form__label {
                 position: absolute;
-                right: 10px;
-                top: 18px;
+                top: 0;
+                display: block;
+                transition: 0.2s;
+                font-size: 1rem;
+                color: #9b9b9b;
+            }
+            .form__field:focus {
+                padding-bottom: 6px;
+                border-width: 3px;
+                border-image: linear-gradient(to right, #11998e, #38ef7d);
+                border-image-slice: 1;
+            }
+            .form__field:focus ~ .form__label {
+                position: absolute;
+                top: 0;
+                display: block;
+                transition: 0.2s;
+                font-size: 1rem;
+                color: #11998e;
+            }
+            /* reset input */
+            .form__field:required, .form__field:invalid {
+                box-shadow: none;
+            }
+            textarea {
+                color: #d2cfcf;
+                font-size: 15px;
+                width: 100%;
+                background: #222F3E;
+            }
+            button {
+                padding: 10px 30px;
+                color: #d2cfcf;
+                background: #222F3E;
+                font-size: 16px;
+            }
+            /* demo */
+            body {
+                font-family: 'Poppins', sans-serif;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                font-size: 1.5rem;
+                background-color: #222222;
             }
 
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+        <div class="center">
+            <form method="">
+                <div class="form__group field">
+                    <input type="email" class="form__field" placeholder="Send Template to ..." name="email" id='email' required />
+                    <label for="email" class="form__label">Send Template to ...</label>
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                <div class="form__group">
+                    <textarea placeholder="Your Html Mail Template" rows="15" name="template" required></textarea>
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+                <button type="submit">Test</button>
+            </form>
         </div>
     </body>
 </html>
