@@ -8,9 +8,16 @@ use App\Mail\Testmail;
 
 class MailController extends Controller
 {
-	public function send()
+	public function send(Request $request)
 	{
-		Mail::to('lamthanhhoai1990@gmail.com')->send(new Testmail());
+		$request->validate([
+			'email' => 'required',
+			'template' => 'required'
+		]);
+
+		$template = $request->template;
+
+		Mail::to($request->email)->send(new Testmail($template));
 		return 'Email was sent';
 	}
 }

@@ -97,7 +97,8 @@
     </head>
     <body>
         <div class="center">
-            <form method="">
+            <form method="POST" action="{{ route('send') }}" enctype="multipart/form-data">
+                @csrf
                 <div class="form__group field">
                     <input type="email" class="form__field" placeholder="Send Template to ..." name="email" id='email' required />
                     <label for="email" class="form__label">Send Template to ...</label>

@@ -13,6 +13,6 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Route::get('/send-email', 'MailController@send');
+Route::post('/send-email', 'MailController@send')->name('send');
