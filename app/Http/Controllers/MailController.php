@@ -18,6 +18,6 @@ class MailController extends Controller
 		$template = $request->template;
 
 		Mail::to($request->email)->send(new Testmail($template));
-		return 'Email was sent';
+		return redirect(route('welcome'))->with('messenger', 'Email was send');
 	}
 }

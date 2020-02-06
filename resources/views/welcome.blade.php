@@ -74,6 +74,8 @@
                 font-size: 15px;
                 width: 100%;
                 background: #222F3E;
+                outline: none;
+                padding: 10px;
             }
             button {
                 padding: 10px 30px;
@@ -92,6 +94,10 @@
                 font-size: 1.5rem;
                 background-color: #222222;
             }
+            .alert-success {
+                color: #d2cfcf;
+                margin-bottom: 20px;
+            }
 
         </style>
     </head>
@@ -106,6 +112,11 @@
                 <div class="form__group">
                     <textarea placeholder="Your Html Mail Template" rows="15" name="template" required></textarea>
                 </div>
+                @if(session('messenger'))
+                    <div class="alert-success">
+                        {{ session('messenger') }}
+                    </div>
+                @endif
                 <button type="submit">Test</button>
             </form>
         </div>
